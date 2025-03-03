@@ -1,35 +1,35 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import React from "react";
+import { Routes, Route, Link } from "react-router-dom";
+import Home from "./components/Home";
+import Counter from "./components/examples/Counter";
+import ToggleTheme from "./components/examples/ToggleTheme";
+import FormInput from "./components/examples/FormInput";
+import ArrayManipulation from "./components/examples/ArrayManipulation";
+import ObjectState from "./components/examples/ObjectState";
+import MultiState from "./components/examples/MultiState";
+import Timer from "./components/examples/Timer";
+import ShowHide from "./components/examples/ShowHide";
+import FetchExample from "./components/examples/FetchExample";
+import ComplexState from "./components/examples/ComplexState";
 
-function App() {
-  const [count, setCount] = useState(0)
-
+const App = () => {
   return (
-    <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
-}
+    <div>
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/counter" element={<Counter />} />
+        <Route path="/toggle-theme" element={<ToggleTheme />} />
+        <Route path="/form-input" element={<FormInput />} />
+        <Route path="/array-manipulation" element={<ArrayManipulation />} />
+        <Route path="/object-state" element={<ObjectState />} />
+        <Route path="/multi-state" element={<MultiState />} />
+        <Route path="/timer" element={<Timer />} />
+        <Route path="/show-hide" element={<ShowHide />} />
+        <Route path="/fetch-example" element={<FetchExample />} />
+        <Route path="/complex-state" element={<ComplexState />} />
+      </Routes>
+    </div>
+  );
+};
 
-export default App
+export default App;

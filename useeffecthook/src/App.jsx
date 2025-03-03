@@ -1,35 +1,38 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import React from "react";
+import { Routes, Route, Link } from "react-router-dom";
+import Home from "./components/Home";
+import GeoLocation from "./components/examples/GeoLocation";
+import ThemeSaver from "./components/examples/ThemeSaver";
+import MouseTracker from "./components/examples/MouseTracker";
+import AutoLogout from "./components/examples/AutoLogout";
+import OnlineStatus from "./components/examples/OnlineStatus";
+import DebounceSearch from "./components/examples/DebounceSearch";
+import NotificationPermission from "./components/examples/NotificationPermission";
+import BeforeReload from "./components/examples/BeforeReload";
+import FetchExample from "./components/examples/FetchApi";
+import WebSocketChat from "./components/examples/WebSocketChat";
 
-function App() {
-  const [count, setCount] = useState(0)
-
+const App = () => {
   return (
-    <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
-}
+    <div>
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/fetch-api" element={<FetchExample />} />
+        <Route path="/before-reload" element={<BeforeReload />} />
+        <Route path="/change-theme" element={<ThemeSaver />} />
+        <Route path="/mouse-tracker" element={<MouseTracker />} />
+        <Route path="/auto-logout" element={<AutoLogout />} />
+        <Route path="/online-status" element={<OnlineStatus />} />
+        <Route path="/debounce-search" element={<DebounceSearch />} />
+        <Route
+          path="/notification-permission"
+          element={<NotificationPermission />}
+        />
+        <Route path="/geo-location" element={<GeoLocation />} />
+        <Route path="/websocket-chat" element={<WebSocketChat />} />
+      </Routes>
+    </div>
+  );
+};
 
-export default App
+export default App;
