@@ -1,35 +1,38 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import React from "react";
+import { Routes, Route } from "react-router-dom";
+import Home from "./components/Home";
+import FocusInput from "./components/examples/FocusInput";
+import TrackPreviousValue from "./components/examples/TrackPreviousValue";
+import TimerSec from "./components/examples/TimerSec";
+import Form from "./components/examples/Form";
+import ChatBox from "./components/examples/ChatBox";
+import ScrollPosition from "./components/examples/ScrollPosition";
+import PreventMultipleClicks from "./components/examples/PreventMultipleClicks";
+import ScrollToSection from "./components/examples/ScrollToSection";
+import VideoPlayer from "./components/examples/VideoPlayer";
+import ModalExample from "./components/examples/ModalExample";
 
-function App() {
-  const [count, setCount] = useState(0)
-
+const App = () => {
   return (
-    <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
-}
+    <div>
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/focus-input" element={<FocusInput />} />
+        <Route path="/track-previous" element={<TrackPreviousValue />} />
+        <Route path="/timer-sec" element={<TimerSec />} />
+        <Route path="/form" element={<Form />} />
+        <Route path="/chat-box" element={<ChatBox />} />
+        <Route path="/scroll-position" element={<ScrollPosition />} />
+        <Route
+          path="/prevent-multiple-clicks"
+          element={<PreventMultipleClicks />}
+        />
+        <Route path="/scroll-to-section" element={<ScrollToSection />} />
+        <Route path="/video-player" element={<VideoPlayer />} />
+        <Route path="/model" element={<ModalExample />} />
+      </Routes>
+    </div>
+  );
+};
 
-export default App
+export default App;
