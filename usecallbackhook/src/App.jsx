@@ -5,7 +5,8 @@ import Counter from "./components/examples/Counter";
 import DebounceInput from "./components/examples/DebounceInput";
 import SearchList from "./components/examples/SearchList";
 import Parent from "./components/examples/Parent";
-import Timer from "./components/examples/Timer";
+import WeatherAPI from "./components/examples/WeatherAPI";
+import SearchAPI from "./components/examples/SearchAPI";
 import ChatApp from "./components/examples/ChatApp";
 import InfiniteScroll from "./components/examples/InfiniteScroll";
 import DragDropList from "./components/examples/DragDropList";
@@ -21,7 +22,8 @@ const App = () => {
         <Route path="/debounce-input" element={<DebounceInput />} />
         <Route path="/search-list" element={<SearchList />} />
         <Route path="/parent" element={<Parent />} />
-        <Route path="/timer" element={<Timer />} />
+        <Route path="/weather-api" element={<WeatherAPI />} />
+        <Route path="/search-api" element={<SearchAPI />} />
         <Route path="/chat-app" element={<ChatApp />} />
         <Route path="/infinite-scroll" element={<InfiniteScroll />} />
         <Route path="/dragdrop-list" element={<DragDropList />} />

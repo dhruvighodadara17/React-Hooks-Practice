@@ -43,12 +43,21 @@ const Home = () => {
           </p>
           <Link to="/parent">Prevent Re-renders in child components</Link>
         </div>
+
         <div>
           <p>
-            Prevent Function Recreation in Timer (setInterval) (Ensures the
-            startTimer function does not get recreated unnecessarily)
+            Fetch and Display Weather Data by City Name This example allows
+            users to enter a city name, fetch weather data from the OpenWeather
+            API, and display the temperature, weather condition, and humidity.
           </p>
-          <Link to="/timer">Timer Example</Link>
+          <Link to="/weather-api">Weather App</Link>
+        </div>
+        <div>
+          <p>
+            API Fetch with Search Input (Avoids Unnecessary Calls) Prevents
+            unnecessary API calls when typing quickly in an input field.
+          </p>
+          <Link to="/search-api">Search data from API</Link>
         </div>
         <div>
           <p>
