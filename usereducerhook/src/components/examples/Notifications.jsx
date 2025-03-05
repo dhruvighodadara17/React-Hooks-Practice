@@ -1,11 +1,11 @@
-import React, { useReducer, useEffect } from "react";
+import React, { useReducer } from "react";
 
 const notificationsReducer = (state, action) => {
   switch (action.type) {
     case "ADD_NOTIFICATION":
       return [
         ...state,
-        { id: Date.now(), message: action.message, type: action.notifType },
+        { id: action.id, message: action.message, type: action.notifType },
       ];
     case "REMOVE_NOTIFICATION":
       return state.filter((notif) => notif.id !== action.id);
@@ -19,19 +19,23 @@ const Notifications = () => {
 
   const addNotification = (message, notifType) => {
     const id = Date.now();
-    dispatch({ type: "ADD_NOTIFICATION", message, notifType });
+    dispatch({ type: "ADD_NOTIFICATION", id, message, notifType });
 
-    // Auto-remove notification after 3 seconds
-    setTimeout(() => dispatch({ type: "REMOVE_NOTIFICATION", id }), 3000);
+    // Remove notification automatically after 4 seconds
+    setTimeout(() => {
+      dispatch({ type: "REMOVE_NOTIFICATION", id });
+    }, 1000);
   };
 
   return (
     <div>
       <h1>Notifications System</h1>
+
       <button
         onClick={() => addNotification("Data saved successfully!", "success")}>
         Show Success Notification
       </button>
+
       <button onClick={() => addNotification("Something went wrong!", "error")}>
         Show Error Notification
       </button>

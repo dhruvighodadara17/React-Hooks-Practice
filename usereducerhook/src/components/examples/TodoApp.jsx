@@ -1,23 +1,23 @@
-import React, { useReducer } from "react";
+import React, { useReducer, useState } from "react";
 
-const todoReducer = (state, action) => {
-  switch (action.type) {
-    case "ADD":
-      return [...state, { id: Date.now(), text: action.text, done: false }];
-    case "REMOVE":
-      return state.filter((todo) => todo.id !== action.id);
-    case "TOGGLE":
-      return state.map((todo) =>
-        todo.id === action.id ? { ...todo, done: !todo.done } : todo
-      );
-    default:
-      return state;
-  }
+const todoActions = {
+  ADD: (state, action) => [
+    ...state,
+    { id: Date.now(), text: action.text, completed: false },
+  ],
+  TOGGLE: (state, action) =>
+    state.map((todo) =>
+      todo.id === action.id ? { ...todo, completed: !todo.completed } : todo
+    ),
+  REMOVE: (state, action) => state.filter((todo) => todo.id !== action.id),
 };
+
+const todoReducer = (state, action) =>
+  todoActions[action.type] ? todoActions[action.type](state, action) : state;
 
 const TodoApp = () => {
   const [todos, dispatch] = useReducer(todoReducer, []);
-  const [text, setText] = React.useState("");
+  const [text, setText] = useState("");
 
   return (
     <div>
@@ -28,7 +28,9 @@ const TodoApp = () => {
         {todos.map((todo) => (
           <li key={todo.id}>
             <span
-              style={{ textDecoration: todo.done ? "line-through" : "none" }}>
+              style={{
+                textDecoration: todo.completed ? "line-through" : "none",
+              }}>
               {todo.text}
             </span>
             <button onClick={() => dispatch({ type: "TOGGLE", id: todo.id })}>
